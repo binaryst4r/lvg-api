@@ -3,10 +3,12 @@ include SendGrid
 module Services
   module Email
     class Sendgrid
-      def initialize(params)
-        @email = params[:email]
-        @favorite_movie = params[:favorite_movie]
-        @message = params[:message]
+      attr_reader :email, :favorite_movie, :message
+      
+      def initialize(email, favorite_movie, message)
+        @email = email
+        @favorite_movie = favorite_movie
+        @message = message
       end
 
       def send_email
@@ -27,7 +29,9 @@ module Services
           "content": [
             {
               "type": "text/html",
-              "value": "<strong>And easy to do anywhere, even with Ruby</strong>"
+              "value": "<strong>From:</strong> #{email}</br>
+                        <strong>Favorite Movie:</strong> #{favorite_movie}<br/>
+                        <p>#{message}</p>"
             }
           ]
         }.to_json

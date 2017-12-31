@@ -4,7 +4,7 @@ module Services
   module Email
     class Sendgrid
       attr_reader :email, :favorite_movie, :message
-      
+
       def initialize(email, favorite_movie, message)
         @email = email
         @favorite_movie = favorite_movie
@@ -17,7 +17,7 @@ module Services
             {
               "to": [
                 {
-                  "email": email
+                  "email": 'larryvgust@gmail.com'
                 }
               ],
               "subject": "Yo, someone contacted you"
